@@ -2,7 +2,10 @@ package com.epam.mjc.stage0;
 
 import com.epam.mjc.stage0.utils.Fridge;
 
-public class FridgeAlgorithm {
+public class FridgeAlgorithm implements Fridge{
+
+    private boolean isOpen = false;
+    private boolean hasMilk = true;
 
     /**
      * This is a first task in this module. You need to get milk from a fridge =)
@@ -12,5 +15,30 @@ public class FridgeAlgorithm {
      */
     public void fridgeAlgorithm(Fridge fridge) {
 
+    }
+
+    @Override
+    public void close() {
+        isOpen = false;
+        System.out.println("Fridge is closed.");
+    }
+
+    @Override
+    public void open() {
+        isOpen = true;
+        System.out.println("Fridge is opened.");
+    }
+
+    @Override
+    public void getMilk() {
+        if (isOpen) {
+            if (hasMilk) {
+                System.out.println("Got the milk from the fridge!");
+            } else {
+                System.out.println("No milk in the fridge.");
+            }
+        } else {
+            System.out.println("Fridge is not open. Cannot get milk.");
+        }
     }
 }
